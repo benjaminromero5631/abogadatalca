@@ -18,8 +18,8 @@ export default function SobreCatalina() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="sobre-nosotras" className="bg-white py-20 md:py-28 px-6 border-t border-border">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="sobre-nosotras" className="bg-white py-14 md:py-28 px-4 sm:px-6 border-t border-border">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
         {/* Imagen */}
         <motion.div
           className="order-2 md:order-1"
@@ -28,7 +28,7 @@ export default function SobreCatalina() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
+          <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
             <Image
               src="/images/abogadas/presentacion-abogada.jpg"
               alt="Catalina Fuentes — Abogada especialista en Derecho de Familia, Talca"
