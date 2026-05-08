@@ -1,0 +1,22 @@
+{
+  "name": "calude-webbuilder",
+  "version": "1.0.0",
+  "description": "Build professional landing pages with Claude Code. Clone, run claude, answer questions, get a deployed website.",
+  "author": "Benjamin Romero (https://godsystem.vercel.app)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjaminromero5631/claude-webkit.git"
+  },
+  "keywords": [
+    "claude-code",
+    "web-builder",
+    "landing-page",
+    "nextjs",
+    "ai-assisted",
+    "godsystem"
+  ],
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
