@@ -29,10 +29,8 @@ export default function SobreCatalina() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
-            {/* TODO: Reemplazar src con la ruta real de la foto de Catalina */}
-            {/* Ejemplo: src="/images/catalina.jpg" */}
             <Image
-              src="/images/catalina.jpg"
+              src="/images/abogadas/presentacion-abogada.jpg"
               alt="Catalina Fuentes — Abogada especialista en Derecho de Familia, Talca"
               fill
               className="object-cover object-top"
