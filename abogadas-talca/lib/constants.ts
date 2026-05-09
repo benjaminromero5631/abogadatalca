@@ -20,7 +20,7 @@ export const TEAM = [
     title: "Abogada",
     subtitle: "Derecho de Familia y Laboral",
     bio: "Licenciada en Ciencias Jurídicas y Sociales. +12 años de ejercicio en la Región del Maule. Especializada en litigación de familia y defensa de trabajadores.",
-    photo: "/images/catalina.jpg",
+    photo: "/images/abogadas/presentacion-abogada.jpg",
     linkedin: "",
   },
 ] as const;
