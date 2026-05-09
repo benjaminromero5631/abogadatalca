@@ -16,7 +16,7 @@ export default function HeroImage() {
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.25 }}
         >
           <Image
-            src="/images/abogadas/catalina.jpg"
+            src="/images/abogadas/catahero.jpeg"
             alt="Catalina del Carmen Fuentes Tapia — Abogada"
             fill
             className="object-cover object-top"
