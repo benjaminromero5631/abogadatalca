@@ -19,16 +19,16 @@ export default function SobreCatalina() {
 
   return (
     <section id="sobre-nosotras" className="bg-white py-14 md:py-28 px-4 sm:px-6 border-t border-border">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 lg:gap-20 items-center">
         {/* Imagen */}
         <motion.div
-          className="order-2 md:order-1"
+          className="w-full md:w-1/2"
           initial={reduced ? false : { opacity: 0, x: -32 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
+          <div className="relative h-[300px] md:aspect-[2/3] md:h-auto rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
             <Image
               src="/images/abogadas/presentacion-abogada.jpg"
               alt="Catalina Fuentes — Abogada especialista en Derecho de Familia, Talca"
@@ -42,7 +42,7 @@ export default function SobreCatalina() {
 
         {/* Texto */}
         <motion.div
-          className="order-1 md:order-2"
+          className="w-full md:w-1/2"
           initial={reduced ? false : { opacity: 0, x: 32 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-60px" }}
