@@ -4,7 +4,8 @@
 
 ## 0. Reglas de flujo de trabajo
 
-- **Siempre hacer `git push` al terminar cada instruccion.** Hacer commit con los archivos modificados y luego push a `origin main`.
+- **Cada cambio que realices debe publicarse de inmediato:** hacer `git commit + git push` al terminar cada tarea, sin esperar instruccion del usuario.
+- **Deployar con `vercel --prod` al terminar cada instruccion.** Ejecutar desde `abogadas-talca/`. NO usar `git push` para deployar.
 - **Actualizar este CLAUDE.md** cuando el usuario entregue una instruccion nueva de comportamiento o flujo de trabajo.
 
 ---
