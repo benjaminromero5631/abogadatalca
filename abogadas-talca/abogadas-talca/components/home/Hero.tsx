@@ -37,7 +37,7 @@ export default function Hero() {
           }}
         />
         <Image
-          src="/images/abogadas/catahero.jpeg"
+          src="/images/abogadas/presentacion-abogada.jpg"
           fill
           className="object-cover object-top"
           alt="Catalina Fuentes, abogada"
@@ -129,7 +129,7 @@ export default function Hero() {
           })}
         >
           <Image
-            src="/images/abogadas/catahero.jpeg"
+            src="/images/abogadas/presentacion-abogada.jpg"
             fill
             className="object-cover object-top"
             alt="Catalina Fuentes, abogada"
