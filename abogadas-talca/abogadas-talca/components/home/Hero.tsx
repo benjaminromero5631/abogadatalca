@@ -32,7 +32,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, #1E1E2E 45%, rgba(30,30,46,0.53) 70%, transparent 100%)",
+              "linear-gradient(to right, #1E1E2E 25%, rgba(30,30,46,0.53) 55%, transparent 100%)",
             zIndex: 1,
           }}
         />
