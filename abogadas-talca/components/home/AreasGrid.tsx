@@ -6,21 +6,21 @@ export default function AreasGrid() {
   const waUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.waMessage)}`;
 
   return (
-    <section id="areas" className="bg-stone py-20 md:py-28 px-6">
+    <section id="areas" className="bg-stone py-14 md:py-28 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <AnimatedSection>
           <p className="text-terracotta text-xs uppercase tracking-widest font-medium mb-4">Áreas de práctica</p>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-3">
+          <h2 className="font-display text-3xl md:text-5xl font-medium text-ink mb-3">
             Resolvemos tu caso.
           </h2>
-          <p className="text-ink-faint text-sm max-w-md mb-14">
+          <p className="text-ink-faint text-sm max-w-md mb-8 md:mb-14">
             Si no ves tu situación reflejada, escríbenos — siempre encontramos la vía legal correcta.
           </p>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {AREAS.map((area, i) => {
-            const isDestacada = area.slug === "defensa-deudores";
+            const isDestacada = area.slug === "derecho-familia";
             return (
               <AnimatedSection key={area.slug} delay={i * 0.07}>
                 <Link
