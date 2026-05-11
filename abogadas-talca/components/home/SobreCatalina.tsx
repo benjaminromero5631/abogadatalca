@@ -18,19 +18,21 @@ export default function SobreCatalina() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="sobre-nosotras" className="bg-white py-14 md:py-28 px-4 sm:px-6 border-t border-border">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 lg:gap-20 items-center">
+    <section id="sobre-nosotras" className="bg-white py-20 md:py-28 px-6 border-t border-border">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Imagen */}
         <motion.div
-          className="w-full md:w-1/2"
+          className="order-2 md:order-1"
           initial={reduced ? false : { opacity: 0, x: -32 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <div className="relative h-[300px] md:aspect-[2/3] md:h-auto rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone max-w-sm mx-auto md:mx-0">
+            {/* TODO: Reemplazar src con la ruta real de la foto de Catalina */}
+            {/* Ejemplo: src="/images/catalina.jpg" */}
             <Image
-              src="/images/abogadas/presentacion-abogada.jpg"
+              src="/images/catalina.jpg"
               alt="Catalina Fuentes — Abogada especialista en Derecho de Familia, Talca"
               fill
               className="object-cover object-top"
@@ -42,7 +44,7 @@ export default function SobreCatalina() {
 
         {/* Texto */}
         <motion.div
-          className="w-full md:w-1/2"
+          className="order-1 md:order-2"
           initial={reduced ? false : { opacity: 0, x: 32 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-60px" }}

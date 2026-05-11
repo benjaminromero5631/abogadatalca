@@ -44,10 +44,6 @@ export const metadata: Metadata = {
     siteName: BUSINESS.name,
   },
   robots: { index: true, follow: true },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
 };
 
 const jsonLd = {
