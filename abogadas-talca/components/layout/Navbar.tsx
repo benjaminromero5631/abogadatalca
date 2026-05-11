@@ -8,7 +8,7 @@ import { BUSINESS } from "@/lib/constants";
 
 const links = [
   { href: "/#areas", label: "Áreas" },
-  { href: "/nosotras", label: "Nosotras" },
+  { href: "/nosotras", label: "Sobre Abogadas Talca" },
   { href: "/contacto", label: "Contacto" },
 ];
 
