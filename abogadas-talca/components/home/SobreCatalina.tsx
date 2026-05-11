@@ -49,7 +49,7 @@ export default function SobreCatalina() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         >
           <p className="text-terracotta text-xs uppercase tracking-widest font-medium mb-4">
-            Sobre Nosotras
+            Fundadora
           </p>
 
           <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-1">
