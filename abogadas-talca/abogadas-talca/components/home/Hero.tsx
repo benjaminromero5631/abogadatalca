@@ -39,7 +39,7 @@ export default function Hero() {
         <Image
           src="/images/abogadas/presentacion-abogada.jpg"
           fill
-          className="object-cover object-top"
+          className="object-contain object-top"
           alt="Catalina Fuentes, abogada"
           priority
         />
