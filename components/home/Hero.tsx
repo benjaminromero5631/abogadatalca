@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion, animate } from "framer-motion";
 import { BUSINESS } from "@/lib/constants";
-import HeroImage from "@/components/home/HeroImage";
 
 const STATS = [
   { prefix: "+", to: 12, suffix: " años", label: "De ejercicio" },
@@ -62,7 +61,7 @@ export default function Hero() {
 
   return (
     <section className="bg-ink text-white relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-16 items-center">
+      <div className="max-w-3xl mx-auto px-6 py-24 md:py-32">
         <div>
           <motion.p
             className="text-white/40 text-xs uppercase tracking-widest mb-6 font-body"
@@ -97,7 +96,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
-            Derecho de familia, laboral, civil y penal. Primera consulta gratuita.
+            Derecho de Familia, Civil, Laboral y Penal. Primera consulta gratuita.
           </motion.p>
 
           <motion.div
@@ -148,7 +147,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <HeroImage />
       </div>
     </section>
   );
