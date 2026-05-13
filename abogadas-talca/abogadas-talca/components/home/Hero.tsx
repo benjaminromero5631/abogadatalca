@@ -49,7 +49,7 @@ export default function Hero() {
       <div className="relative min-h-screen lg:grid lg:grid-cols-[55%_45%]" style={{ zIndex: 10 }}>
 
         {/* Columna izquierda — contenido */}
-        <div className="flex flex-col justify-center pt-28 pb-12 pl-6 pr-4 lg:px-16 lg:pt-32 lg:pb-20">
+        <div className="flex flex-col justify-center pt-28 pb-12 pl-6 pr-2 max-w-[55%] lg:max-w-none lg:px-16 lg:pt-32 lg:pb-20">
 
           {/* Badge */}
           <motion.div className="mb-5" {...a(fadeUp(0.1))}>
@@ -63,7 +63,7 @@ export default function Hero() {
 
           {/* Heading */}
           <motion.h1
-            className="font-display font-normal leading-tight mb-4 text-3xl lg:text-5xl"
+            className="font-display font-normal leading-tight mb-4 text-2xl sm:text-3xl lg:text-5xl"
             {...a(fadeUp(0.2))}
           >
             <span className="text-white">Defensa legal</span>
@@ -73,14 +73,14 @@ export default function Hero() {
 
           {/* Párrafo */}
           <motion.p
-            className="text-sm text-white/70 max-w-[260px] mb-8 leading-relaxed"
+            className="text-sm text-white/70 mb-8 leading-relaxed"
             {...a(fadeUp(0.35))}
           >
             Te acompañamos con empatía, experiencia y compromiso en cada etapa del proceso legal.
           </motion.p>
 
           {/* Stats */}
-          <div className="flex gap-5 mb-8">
+          <div className="flex flex-wrap gap-x-4 gap-y-3 mb-8">
             {STATS.map(({ icon: Icon, number, label }, i) => (
               <motion.div
                 key={number}
@@ -99,7 +99,7 @@ export default function Hero() {
           </div>
 
           {/* Botones */}
-          <motion.div className="flex flex-col gap-3 max-w-[240px]" {...a(fadeUp(0.65))}>
+          <motion.div className="flex flex-col gap-3" {...a(fadeUp(0.65))}>
             <a
               href="https://wa.me/56962242528"
               target="_blank"
