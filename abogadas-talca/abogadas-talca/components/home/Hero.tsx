@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { MapPin, Users2, Star, Shield, MessageCircle, Heart } from "lucide-react";
 
@@ -12,16 +13,21 @@ const STATS = [
 
 function fadeUp(delay: number) {
   return {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5, ease: "easeOut" as const, delay },
+    transition: { duration: 0.45, ease: "easeOut" as const, delay },
   };
 }
 
 export default function Hero() {
   const reduced = useReducedMotion() ?? false;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
+  // Solo aplicar animaciones despues del montaje en el cliente.
+  // Esto evita que framer-motion deje el contenido en opacity:0 durante SSR.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const a = (props: Record<string, any>) => (reduced ? {} : props);
+  const a = (props: Record<string, any>) => (mounted && !reduced ? props : {});
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#1E1E2E]">
