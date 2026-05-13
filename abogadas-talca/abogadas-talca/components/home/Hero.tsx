@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { MapPin, Users2, Star, Shield, MessageCircle } from "lucide-react";
+import { MapPin, Users2, Star, Shield, MessageCircle, Heart } from "lucide-react";
 
 const STATS = [
   { icon: Users2, number: "+500", label: "clientes asesorados" },
@@ -110,6 +110,21 @@ export default function Hero() {
               <MessageCircle size={16} />
               Hablar por WhatsApp
             </a>
+
+            {/* Tarjeta cita */}
+            <div
+              className="rounded-xl px-4 py-4 my-1"
+              style={{ backgroundColor: "#7D1F4B" }}
+            >
+              <Heart size={18} className="text-white/70 mb-3" strokeWidth={1.5} />
+              <p className="font-display italic text-white/90 text-sm leading-relaxed mb-2">
+                &ldquo;No es solo un caso. Es tu historia, y merece ser bien defendida.&rdquo;
+              </p>
+              <p className="text-white/50 text-[11px] tracking-wide">
+                Catalina Fuentes &middot; Magíster en Derecho de Familia
+              </p>
+            </div>
+
             <a
               href="#areas"
               className="flex items-center justify-center rounded-full border border-white/30 hover:border-white/70 py-3 px-5 text-sm text-white transition-colors bg-transparent"
