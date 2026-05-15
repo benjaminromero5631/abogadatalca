@@ -53,22 +53,21 @@ export default function ContactSection() {
 
               <div className="overflow-hidden rounded-2xl border border-border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.15!2d-71.6748!3d-35.4262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96697135b4b5b5b5%3A0x1!2sCalle+1+Pte+1258%2C+Talca%2C+Maule%2C+Chile!5e0!3m2!1ses-419!2scl!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0!2d-71.6694!3d-35.4264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669714a6d3ef16b%3A0x9c1b0c3b6c1e2f1a!2sCalle%201%20Pte%201258%2C%20Talca%2C%20Maule!5e0!3m2!1ses!2scl!4v1"
                   width="100%"
-                  height="420"
+                  height="400"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-2xl w-full shadow-md"
                   title="Ubicacion Abogadas Talca"
                 />
               </div>
               <a
-                href="https://maps.google.com/?q=Calle+1+Pte+1258,+Talca,+Maule,+Chile"
+                href="https://maps.google.com/?q=Calle+1+Pte+1258,+Talca,+Maule"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-3 text-sm text-[#7D1F4B] hover:underline font-medium"
+                className="inline-flex items-center gap-2 border border-terracotta text-terracotta hover:bg-burdeo hover:text-white hover:border-burdeo transition-colors px-5 py-2.5 rounded-lg text-sm font-medium"
               >
                 📍 Como llegar — Abrir en Google Maps
               </a>

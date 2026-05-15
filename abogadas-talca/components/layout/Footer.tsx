@@ -70,7 +70,7 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-2">
               <span className="mt-0.5 shrink-0">📍</span>
-              <span className="break-words">1 Poniente 1258, Of. 1111, Talca</span>
+              <span>1 Poniente 1258, Of. 1111, Talca</span>
             </li>
             <li className="flex items-center gap-2">
               <span>📞</span>
@@ -96,7 +96,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="text-white/50 hover:text-[#C4738A] transition-colors"
+                className="text-white/50 hover:text-[#7D1F4B] transition-colors"
               >
                 {s.icon}
               </a>
