@@ -1,170 +1,189 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Link from "next/link";
-import { motion, useReducedMotion, animate } from "framer-motion";
-import { Heart } from "lucide-react";
-import { BUSINESS } from "@/lib/constants";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { MapPin, Users2, Star, Shield, MessageCircle, Heart } from "lucide-react";
 
 const STATS = [
-  { prefix: "+", to: 12, suffix: " años", label: "De ejercicio" },
-  { prefix: "+", to: 500, suffix: "", label: "Casos resueltos" },
-  { prefix: "", to: 6, suffix: " áreas", label: "Familia · Laboral · Civil · Penal · + mas" },
+  { icon: Users2, number: "+500", label: "clientes asesorados" },
+  { icon: Star,   number: "4.9/5", label: "valoración de clientes" },
+  { icon: Shield, number: "+12",   label: "años de experiencia" },
 ];
 
-function Counter({
-  to,
-  prefix,
-  suffix,
-  delay,
-  reduced,
-}: {
-  to: number;
-  prefix: string;
-  suffix: string;
-  delay: number;
-  reduced: boolean;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (reduced) {
-      if (ref.current) ref.current.textContent = prefix + to + suffix;
-      return;
-    }
-
-    let controls: { stop: () => void } | null = null;
-
-    const t = setTimeout(() => {
-      controls = animate(0, to, {
-        duration: 1.4,
-        ease: [0.16, 1, 0.3, 1],
-        onUpdate(v) {
-          if (ref.current) ref.current.textContent = prefix + Math.round(v) + suffix;
-        },
-      });
-    }, delay * 1000);
-
-    return () => {
-      clearTimeout(t);
-      controls?.stop();
-    };
-  }, [to, prefix, suffix, delay, reduced]);
-
-  return (
-    <span ref={ref}>{reduced ? prefix + to + suffix : prefix + "0" + suffix}</span>
-  );
+function fadeUp(delay: number) {
+  return {
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.45, ease: "easeOut" as const, delay },
+  };
 }
 
 export default function Hero() {
   const reduced = useReducedMotion() ?? false;
-  const waUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.waMessage)}`;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const a = (props: Record<string, any>) => (mounted && !reduced ? props : {});
 
   return (
-    <section className="bg-ink text-white relative overflow-hidden">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-32">
-        <div>
-          <motion.p
-            className="text-white/40 text-xs uppercase tracking-widest mb-6 font-body"
-            initial={reduced ? false : { opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0 }}
-          >
-            Abogadas Talca — Talca, Región del Maule
-          </motion.p>
+    <section className="bg-navy overflow-hidden">
 
+      {/* ── PARTE SUPERIOR: split layout ── */}
+      <div className="flex flex-col lg:grid lg:grid-cols-[55%_45%]">
+
+        {/* Mobile: foto arriba (solo mobile) */}
+        <div
+          className="block lg:hidden relative mt-16"
+          style={{ height: "min(75vw, 380px)" }}
+        >
+          <Image
+            src="/images/abogadas/presentacion-abogada.jpg"
+            fill
+            className="object-cover object-top"
+            alt="Catalina Fuentes, abogada"
+            priority
+          />
+          {/* fade sutil hacia navy al fondo */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, transparent, #0F1E3C)" }}
+          />
+        </div>
+
+        {/* Columna izquierda — contenido */}
+        <div className="flex flex-col justify-center px-6 pt-8 pb-10 lg:px-16 lg:pt-36 lg:pb-20">
+
+          {/* Badge ubicación */}
+          <motion.div className="mb-5" {...a(fadeUp(0.1))}>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-3 py-1">
+              <MapPin size={12} color="#C4738A" />
+              <span className="text-[10px] tracking-widest text-white/70 uppercase">
+                Talca, Región del Maule
+              </span>
+            </span>
+          </motion.div>
+
+          {/* H1 */}
           <motion.h1
-            className="font-display text-[1.85rem] sm:text-[2.6rem] md:text-5xl lg:text-6xl font-medium leading-[1.1] mb-6 md:mb-8"
-            initial={reduced ? false : { opacity: 0, x: -28 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.75, ease: "easeOut", delay: 0.15 }}
+            className="font-display font-normal leading-tight mb-4 text-3xl sm:text-4xl lg:text-5xl"
+            {...a(fadeUp(0.2))}
           >
-            +12 años resolviendo<br />
-            casos en la<br />
-            <motion.em
-              className="text-terracotta not-italic"
-              initial={reduced ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.55 }}
-            >
-              Región del Maule.
-            </motion.em>
+            <span className="text-white">Defensa legal</span>
+            <br />
+            <span style={{ color: "#C4738A" }}>cercana y estratégica.</span>
           </motion.h1>
 
+          {/* Párrafo */}
           <motion.p
-            className="text-white/55 text-base md:text-lg leading-relaxed mb-10 max-w-sm"
-            initial={reduced ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            className="text-sm text-white/70 mb-8 leading-relaxed"
+            {...a(fadeUp(0.35))}
           >
-            Derecho de Familia, Civil, Laboral y Penal. Primera consulta gratuita.
+            Te acompañamos con empatía, experiencia y compromiso en cada etapa del proceso legal.
           </motion.p>
 
-          {/* Card cita — solo mobile */}
+          {/* Stats — fila horizontal de 3 columnas */}
+          <div className="grid grid-cols-3 gap-3">
+            {STATS.map(({ icon: Icon, number, label }, i) => (
+              <motion.div
+                key={number}
+                className="flex flex-col gap-0.5"
+                {...a({
+                  initial: { opacity: 0, y: 20 },
+                  animate: { opacity: 1, y: 0 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 0.5 + i * 0.1 },
+                })}
+              >
+                <Icon size={18} className="text-white/50 mb-1" />
+                <span className="text-base font-bold text-white leading-none">{number}</span>
+                <span className="text-[10px] text-white/50 leading-tight">{label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: foto derecha — limpia, sin gradiente agresivo */}
+        <motion.div
+          className="hidden lg:block relative"
+          {...a({
+            initial: { opacity: 0, x: 30 },
+            animate: { opacity: 1, x: 0 },
+            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+          })}
+        >
+          <Image
+            src="/images/abogadas/presentacion-abogada.jpg"
+            fill
+            className="object-cover object-top"
+            alt="Catalina Fuentes, abogada"
+            priority
+          />
+        </motion.div>
+      </div>
+
+      {/* ── PARTE INFERIOR: full width, mismo fondo navy ── */}
+      <div className="px-6 pt-8 pb-16 lg:px-16 lg:pt-12 lg:pb-24">
+
+        {/* Segundo headline */}
+        <motion.h2
+          className="font-display font-normal leading-tight mb-3 text-3xl sm:text-4xl lg:text-5xl"
+          {...a(fadeUp(0.1))}
+        >
+          <span className="text-white">+12 años resolviendo casos en la</span>
+          <br />
+          <span style={{ color: "#C4738A" }}>Región del Maule.</span>
+        </motion.h2>
+
+        {/* Subtítulo */}
+        <motion.p
+          className="text-sm text-white/60 mb-8 leading-relaxed"
+          {...a(fadeUp(0.2))}
+        >
+          Derecho de Familia, Civil, Laboral y Penal. Primera consulta gratuita.
+        </motion.p>
+
+        {/* Quote card + Botones — apilados en mobile, lado a lado en desktop */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-5">
+
+          {/* Quote card — fondo burdeo */}
           <motion.div
-            className="md:hidden mb-8 rounded-2xl bg-[#7D1F4B] px-5 py-5 flex flex-col gap-3"
-            initial={reduced ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.45 }}
+            className="flex-1 rounded-xl px-5 py-5"
+            style={{ backgroundColor: "#7D1F4B" }}
+            {...a(fadeUp(0.3))}
           >
-            <Heart size={20} className="text-white/60 fill-white/20" />
-            <p className="font-display text-lg font-light text-white italic leading-snug">
-              &ldquo;No es solo un caso. Es tu historia,<br />
-              y merece ser bien defendida.&rdquo;
+            <Heart size={20} className="text-white/70 mb-3" strokeWidth={1.5} />
+            <p className="font-display italic text-white/90 text-base leading-relaxed mb-3">
+              &ldquo;No es solo un caso. Es tu historia, y merece ser bien defendida.&rdquo;
             </p>
-            <p className="text-white/50 text-xs">
+            <p className="text-white/50 text-[11px] tracking-wide">
               Catalina Fuentes &middot; Magíster en Derecho de Familia
             </p>
           </motion.div>
 
+          {/* Botones apilados */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
-            initial={reduced ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.55 }}
+            className="flex flex-col gap-3 lg:w-64 lg:self-center"
+            {...a(fadeUp(0.4))}
           >
             <a
-              href={waUrl}
+              href="https://wa.me/56962242528"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-6 py-3 text-sm font-medium transition-colors w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 rounded-full py-3.5 px-5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: "#25D366" }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
+              <MessageCircle size={16} />
               Consulta gratuita
             </a>
-            <Link
+            <a
               href="#areas"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white/60 border border-white/20 hover:border-white/40 hover:text-white transition-colors w-full sm:w-auto"
+              className="flex items-center justify-center rounded-full border border-white/30 hover:border-white/70 py-3.5 px-5 text-sm text-white transition-colors bg-transparent"
             >
               Ver áreas de práctica
-            </Link>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-wrap gap-6 mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10"
-            initial={reduced ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut", delay: 0.7 }}
-          >
-            {STATS.map((s, i) => (
-              <div key={s.label}>
-                <p className="font-display text-3xl font-medium text-white">
-                  <Counter
-                    to={s.to}
-                    prefix={s.prefix}
-                    suffix={s.suffix}
-                    delay={0.8 + i * 0.12}
-                    reduced={reduced}
-                  />
-                </p>
-                <p className="text-white/35 text-xs mt-0.5">{s.label}</p>
-              </div>
-            ))}
+            </a>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
