@@ -33,22 +33,14 @@ export default function Hero() {
       {/* ── PARTE SUPERIOR: split layout ── */}
       <div className="flex flex-col lg:grid lg:grid-cols-[55%_45%]">
 
-        {/* Mobile: foto arriba (solo mobile) */}
-        <div
-          className="block lg:hidden relative mt-16"
-          style={{ height: "min(75vw, 380px)" }}
-        >
+        {/* Mobile: banner arriba (solo mobile) */}
+        <div className="block lg:hidden relative mt-16 h-56 w-full">
           <Image
-            src="/images/abogadas/presentacion-abogada.jpg"
+            src="/images/abogadas/heroprincipal.jpeg"
             fill
-            className="object-cover object-top"
-            alt="Catalina Fuentes, abogada"
+            className="object-cover object-center"
+            alt="Abogadas Talca — banner"
             priority
-          />
-          {/* fade sutil hacia navy al fondo */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, transparent, #0F1E3C)" }}
           />
         </div>
 
